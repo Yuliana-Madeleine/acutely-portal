@@ -2,12 +2,140 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Portal</title>
+  <title>Acutely - Portal</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <app-root></app-root>
+    <nav class="navbar navbar-expand-lg navbar-light nav_menu">
+        <a class="navbar-brand" href="#">
+            <img src="/assets/img/acutely_logo_white.png" width="40" height="40" alt="">
+        </a>        
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav nav_menu">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">What We Do</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">News & Insights</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Log Out</a>
+              </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li> -->
+          </ul>
+        </div>
+      </nav>
+
+
+  <!-- <div class = "nav_header">    
+    <ul class="nav nav_menu justify-content-end">  
+        <a class="navbar-brand" href="#">
+            <img src="/assets/img/acutely_logo_white.png" width="30" height="30" alt="">
+        </a>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">What We Do</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">News & Insights</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log Out</a>
+        </li>
+      </ul>
+    </div> -->
+    <!--  Here logo company section-->
+    <div class="logo_company_section">
+        <img class="card_logo" src="/assets/img/logo_silverspot_cinema.png"  alt="...">        
+    </div>
+    <!-- End company section -->
+  <!--Start nav menu-->
+    <!-- <div class="card text-center">
+        <div class="card-header card_header">
+          <ul class="nav nav-tabs card-header-tabs justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link " href="#">CUSTOMER OVERVIEW</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">REPORTS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">COMPARE LOCATIONS</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">DEMOGRAPHICS</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body content">          
+          <app-root></app-root>
+        </div>
+      </div> -->
+
+      <ul class="nav nav-tabs justify-content-center nav_header" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" id="customer_tab" data-toggle="tab" href="#customer" role="tab" aria-controls="customer" aria-selected="true">CUSTOMER OVERVIEW</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" id="report_tab" data-toggle="tab" href="#report" role="tab" aria-controls="report" aria-selected="false">REPORTS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="compare_tab" data-toggle="tab" href="#compare" role="tab" aria-controls="compare" aria-selected="false">COMPARE LOCATIONS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="demographics_tab" data-toggle="tab" href="#demographics" role="tab" aria-controls="demographics" aria-selected="false">DEMOGRAPHICS</a>
+        </li>
+      </ul>
+      <div class="tab-content tab_content" id="myTabContent">
+        <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer_tab">Hello</div>
+        <div class="tab-pane fade  show active" id="report" role="tabpanel" aria-labelledby="report_tab">
+            <div id = "filters" class = "row content_row filter_section justify-content-between">
+                <div class="btn-toolbar">
+                    <button class="btn btn_filter btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Locations
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Location A</a>
+                      <a class="dropdown-item" href="#">Akron</a>
+                      <a class="dropdown-item" href="#">Branson</a>
+                      <a class="dropdown-item" href="#">Corning</a>
+                    </div> 
+                    
+                    <button class="btn btn_filter btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Period
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Rolling 12 months</a>
+                        <a class="dropdown-item" href="#">Rolling 6 months</a>
+                        <a class="dropdown-item" href="#">Rolling 3 months</a>
+                        <a class="dropdown-item" href="#">Rolling a month</a>
+                      </div>
+                </div>
+                <button type="button" class="btn btn_export btn-sm">Export</button>
+            </div>
+            <app-root></app-root>
+        </div>
+        <div class="tab-pane fade" id="compare" role="tabpanel" aria-labelledby="compare_tab">world!!!</div>
+        <div class="tab-pane fade" id="demographics" role="tabpanel" aria-labelledby="demographics_tab">:D</div>
+      </div>
+    <!--End nav menu-->    
 </body>
 </html>

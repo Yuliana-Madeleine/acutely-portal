@@ -1,1 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
+
+.nav_menu{
+    background-color: #2e9189;
+    font-size: 0.65rem;
+    padding: 0 1rem;
+}
+.nav_logo{
+    background-color: #2e9189;
+    justify-content: flex-start !important;
+}
+
+#navbarNav ul li a.nav-link{
+    color: white;    
+}
+.nav_header a.nav-link{    
+    color:#8a8a8a !important;
+    padding: 0.5rem 2.5rem;
+}
+
+.nav-tabs .nav-link.active{
+    background-color: #f4f4f4;
+    border-top-color:#f4f4f4;
+    border-left-color: #f4f4f4;
+    border-right-color: #f4f4f4;
+    border-bottom-width: 2px;
+    border-bottom-color:#2e9189;
+}
+.nav-tabs .nav-link:hover{
+    border-color: #f4f4f4;
+}
+.nav_logo{
+    /*width:30px;*/
+    height:31px;
+    float:left; 
+    padding-left:10px;
+}
+
+.content {
+    background-color:#f4f4f4;
+    text-align: center;
+}
+.content_row{
+      width: 70%;
+      margin: 0 auto;      
+}
+.card_item{    
+    margin-bottom: 10px;
+    border: none;
+}
+
+.nav_header{
+    font-size: 0.65rem;
+    font-weight: 600 !important;
+    color: lightslategray;
+    background-color: #f4f4f4;
+}
+.card_logo{
+    width: 150px;
+}
+
+.logo_company_section{
+    position: relative;
+    display: flex;    
+    min-width: 0;
+    word-wrap: break-word;    
+    background-clip: border-box;    
+    justify-content: center !important;
+    background-color:#f4f4f4;
+}
+.tab_content{
+    background-color: #f4f4f4;    
+}
+
+.filter_section{
+    padding: 10px 15px;
+}
+.btn_filter{
+    color: #8a8a8a;
+    background-color: #fff;
+    border-color: #dee2e6;
+    font-size: 0.65rem;
+    margin-right: 10px;
+    /* padding: 0.25rem 2.5rem; */
+}
+
+.btn_export{
+    color: #fff;
+    background-color:#2e9189;
+    border-color: #2e9189;
+    font-size: 0.65rem;
+    padding: 0.25rem 2.5rem;
+}
