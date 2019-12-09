@@ -15,14 +15,14 @@ export class AppComponent {
       title: {
          text: 'Total Revenue'
       },
+      legend: {
+         enabled: false
+      },
       credits: {
              enabled: false
       },
-      /*subtitle: {
-         text: 'Source: WorldClimate.com"'
-      },*/
       xAxis: {
-         // categories: ['Location A', 'Akron', 'Branson', 'Corning']
+        categories: ['Location A', 'Akron', 'Branson', 'Corning']
       },
       yAxis: {
          title: {
@@ -32,38 +32,45 @@ export class AppComponent {
       tooltip: {
          valueSuffix: '$'
       },
+      plotOptions: {
+         series: {
+             borderWidth: 0,
+             dataLabels: {
+                 enabled: true,
+                 format: '{point.y:.1f}$'
+             }
+         }
+      },
       series: [
-           {
-             name: 'Location A',
-             data: [7.5, 0.8, 5.7, 11.3]
-           },
-           {
-             name: 'Akron',
-             data: [7.0]
-           },
-           {
-               name: 'Branson',
-               data: [7.0]
-           },
-           {
-               name: 'Corning',
-               data: [1.5]
-           }
-         /*{
-            name: 'New York',
-            data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8,24.1, 20.1, 14.1, 8.6, 2.5]
-         },
          {
-            name: 'Berlin',
-            data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-         },
-         {
-            name: 'London',
-            data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-         }*/
-      ]
+             name: '',
+             colorByPoint: true,
+             data: [
+                 {
+                     name: 'Location A',
+                     y: 62.74,
+                     drilldown: 'Location A'
+                 },
+                 {
+                     name: 'Akron',
+                     y: 10.57,
+                     drilldown: 'Akron'
+                 },
+                 {
+                     name: 'Branson',
+                     y: 7.23,
+                     drilldown: 'Branson'
+                 },
+                 {
+                     name: 'Corning',
+                     y: 5.58,
+                     drilldown: 'Corning'
+                 }
+             ]
+         }
+     ]
    };
- 
+
    highcharts2 = Highcharts;
    chartOptions2 = {
       chart: {
@@ -72,38 +79,60 @@ export class AppComponent {
       title: {
          text: 'Total Customers'
       },
+      legend: {
+         enabled: false
+      },
       credits: {
        enabled: false
       },
-      xAxis: {},
-      yAxis: {
-         title: {
-            text: ''
+      accessibility: {
+         announceNewData: {
+             enabled: true
          }
+      },
+      xAxis: {
+         type: 'category'
+      },
+      yAxis: {
+         title: false
       },
       tooltip: {
          valueSuffix: 'K'
       },
+      plotOptions: {
+         series: {
+             borderWidth: 0,
+             dataLabels: {
+                 enabled: true,
+                 format: '{point.y:.1f}K'
+             }
+         }
+      },
       series: [
-           {
-             name: 'Location A',
-             data: [36]
-           },
-           {
-               name: 'Akron',
-               data: [47]
-           },
-           {
-               name: 'Branson',
-               data: [33]
-           },
-           {
-               name: 'Corning',
-               data: [35]
-           }
+         {
+            name: 'Locations',
+            colorByPoint: true,
+            data: [
+                {
+                    name: 'Location A',
+                    y: 36.74
+                },
+                {
+                    name: 'Akron',
+                    y: 47.57
+                },
+                {
+                    name: 'Branson',
+                    y: 33.23
+                },
+                {
+                    name: 'Corning',
+                    y: 34.58
+                }
+            ]
+        }
       ]
    };
- 
    highcharts3 = Highcharts;
    chartOptions3 = {
       chart: {
@@ -112,38 +141,56 @@ export class AppComponent {
       title: {
          text: 'Total Carryout'
       },
+      legend: {
+         enabled: false
+      },
       credits: {
          enabled: false
       },
-      xAxis: {},
+      xAxis: {
+         type: 'category'
+      },
       yAxis: {
-         title: {
-            text: ''
-         }
+         title: false
       },
       tooltip: {
          valueSuffix: 'M'
       },
+      plotOptions: {
+         series: {
+             borderWidth: 0,
+             dataLabels: {
+                 enabled: true,
+                 format: '{point.y:.1f}M'
+             }
+         }
+     },
       series: [
-           {
-             name: 'Location A',
-             data: [1.1]
-           },
-           {
-               name: 'Akron',
-               data: [0.1]
-           },
-           {
-               name: 'Branson',
-               data: [0.8]
-           },
-           {
-               name: 'Corning',
-               data: [1.2]
-           }
+         {
+            name: 'Locations',
+            colorByPoint: true,
+            data: [
+                {
+                    name: 'Location A',
+                    y: 1.1
+                },
+                {
+                    name: 'Akron',
+                    y: 0.1
+                },
+                {
+                    name: 'Branson',
+                    y: 0.8
+                },
+                {
+                    name: 'Corning',
+                    y: 1.2
+                }
+            ]
+        }
       ]
    };
- 
+
    highcharts4 = Highcharts;
    chartOptions4 = {
       chart: {
@@ -152,36 +199,59 @@ export class AppComponent {
       title: {
          text: 'Total Carryout'
       },
+      legend: {
+         enabled: false
+     },
       credits: {
           enabled: false
       },
-      xAxis: {},
+      xAxis: {
+         categories: ['Location A', 'Akron', 'Branson', 'Corning']
+      },
       yAxis: {
          title: {
             text: ''
          }
       },
       tooltip: {
-         valueSuffix: 'k'
+         valueSuffix: 'K'
+      },
+      plotOptions: {
+         series: {
+             borderWidth: 0,
+             dataLabels: {
+                 enabled: true,
+                 format: '{point.y:.1f}K'
+             }
+         }
       },
       series: [
-           {
-             name: 'Location A',
-             data: [35]
-           },
-           {
-               name: 'Akron',
-               data: [50]
-           },
-           {
-               name: 'Branson',
-               data: [30]
-           },
-           {
-               name: 'Corning',
-               data: [30]
-           }
+         {
+            name: '',
+            colorByPoint: true,
+            data: [
+                {
+                    name: 'Location A',
+                    y: 62.74,
+                    drilldown: 'Location A'
+                },
+                {
+                    name: 'Akron',
+                    y: 10.57,
+                    drilldown: 'Akron'
+                },
+                {
+                    name: 'Branson',
+                    y: 7.23,
+                    drilldown: 'Branson'
+                },
+                {
+                    name: 'Corning',
+                    y: 5.58,
+                    drilldown: 'Corning'
+                }
+            ]
+        }
       ]
    };
  }
- 

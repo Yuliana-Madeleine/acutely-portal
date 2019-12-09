@@ -41,12 +41,16 @@
     text-align: center;
 }
 .content_row{
-      width: 70%;
+      width: 65%;
       margin: 0 auto;      
 }
 .card_item{    
     margin-bottom: 10px;
     border: none;
+}
+
+.card_body{
+    padding: 0.5rem;
 }
 
 .nav_header{
