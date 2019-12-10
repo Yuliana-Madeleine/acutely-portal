@@ -8,7 +8,7 @@ import * as Highcharts from 'highcharts';
 })
 export class DisplayTotalBarComponent implements OnInit {
   highcharts = Highcharts;
-  chartOptions4 = {
+  chartOptions = {
      chart: {
         type: 'column' // Other: bar splines column
      },
