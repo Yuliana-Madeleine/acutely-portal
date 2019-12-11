@@ -95,3 +95,14 @@
     font-size: 0.65rem;
     padding: 0.25rem 2.5rem;
 }
+.card_title{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+    color: #333333;
+    font-size: 18px;
+}
+
+.map_display{
+    height: 250px;
+    min-height: auto;
+    max-width: auto;
+}

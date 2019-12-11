@@ -49,7 +49,7 @@ export class DisplayTotalRevenueComponent implements OnInit {
                 {
                     name: 'Location A',
                     y: 62.74,
-                    drilldown: 'Location A'
+                    drilldown: 'Location At'
                 },
                 {
                     name: 'Akron',
