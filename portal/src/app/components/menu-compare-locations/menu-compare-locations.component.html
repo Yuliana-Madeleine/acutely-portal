@@ -1,0 +1,31 @@
+<!-- Toolbar -->
+<div id = "filters" class = "row content_row filter_section justify-content-between">
+        <div class="btn-toolbar">
+            <button class="btn btn_filter btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Locations
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Location A</a>
+              <a class="dropdown-item" href="#">Akron</a>
+              <a class="dropdown-item" href="#">Branson</a>
+              <a class="dropdown-item" href="#">Corning</a>
+            </div> 
+            
+            <button class="btn btn_filter btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Period
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Rolling 12 months</a>
+                <a class="dropdown-item" href="#">Rolling 6 months</a>
+                <a class="dropdown-item" href="#">Rolling 3 months</a>
+                <a class="dropdown-item" href="#">Rolling a month</a>
+              </div>
+        </div>
+        <button type="button" class="btn btn_export btn-sm">Export</button>
+</div>
+<div class="row content_row">
+        <div class="col-sm-12">
+            <app-total-revenue></app-total-revenue>
+        </div>
+</div>
+    

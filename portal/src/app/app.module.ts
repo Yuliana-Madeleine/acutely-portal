@@ -16,7 +16,11 @@ import { DisplayTotalCarryoutComponent } from './components/total-carryout/total
 import { DisplayTotalBarComponent } from './components/total-bar/total-bar.component';
 import { MapCustomerPotentialComponent } from './components/map-customer-potential/map-customer-potential.component';
 import { MapRevenuePotentialComponent } from './components/map-revenue-potential/map-revenue-potential.component';
-
+import { MenuCustomerOverviewComponent } from './components/menu-customer-overview/menu-customer-overview.component';
+import { MenuReportsComponent } from './components/menu-reports/menu-reports.component';
+import { MenuCompareLocationsComponent } from './components/menu-compare-locations/menu-compare-locations.component';
+import { MenuDemographicsComponent } from './components/menu-demographics/menu-demographics.component';
+import { NavbarHeaderComponent } from './components/shared/navbar-header/navbar-header.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,12 @@ import { MapRevenuePotentialComponent } from './components/map-revenue-potential
     DisplayTotalCarryoutComponent,
     DisplayTotalBarComponent,
     MapCustomerPotentialComponent,
-    MapRevenuePotentialComponent
+    MapRevenuePotentialComponent,
+    MenuCustomerOverviewComponent,
+    MenuReportsComponent,
+    MenuCompareLocationsComponent,
+    MenuDemographicsComponent,
+    NavbarHeaderComponent
   ],
   imports: [
     BrowserModule

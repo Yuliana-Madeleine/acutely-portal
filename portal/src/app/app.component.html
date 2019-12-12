@@ -1,21 +1,16 @@
-<!-- Toolbar -->
-<div class="row content_row">
-  <div class="col-sm-6">
-      <app-total-revenue></app-total-revenue>
-  </div>
-  <div class="col-sm-6">
-      <app-total-customers></app-total-customers>
-  </div>  
-  <div class="col-sm-6">
-      <app-total-carryout></app-total-carryout>
-  </div>
-  <div class="col-sm-6">
-      <app-total-bar></app-total-bar>
-  </div>
-  <div class="col-sm-12">
-      <app-map-customer-potential></app-map-customer-potential>
-  </div>
-  <div class="col-sm-12">
-      <app-map-revenue-potential></app-map-revenue-potential>
-  </div>
-</div>
+<app-navbar-header></app-navbar-header>
+      <div class="tab-content tab_content" id="myTabContent">
+        <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer_tab">
+            <app-menu-customer-overview></app-menu-customer-overview>
+        </div>
+        <div class="tab-pane fade  show active" id="report" role="tabpanel" aria-labelledby="report_tab">           
+            <app-menu-reports></app-menu-reports>
+        </div>
+        <div class="tab-pane fade" id="compare" role="tabpanel" aria-labelledby="compare_tab">
+            <app-menu-compare-locations></app-menu-compare-locations>
+        </div>
+        <div class="tab-pane fade" id="demographics" role="tabpanel" aria-labelledby="demographics_tab">
+            <app-menu-demographics></app-menu-demographics>
+        </div>
+      </div>
+ 
