@@ -21,6 +21,7 @@ import { MenuReportsComponent } from './components/menu-reports/menu-reports.com
 import { MenuCompareLocationsComponent } from './components/menu-compare-locations/menu-compare-locations.component';
 import { MenuDemographicsComponent } from './components/menu-demographics/menu-demographics.component';
 import { NavbarHeaderComponent } from './components/shared/navbar-header/navbar-header.component';
+import { NavbarFooterComponent } from './components/shared/navbar-footer/navbar-footer.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NavbarHeaderComponent } from './components/shared/navbar-header/navbar-
     MenuReportsComponent,
     MenuCompareLocationsComponent,
     MenuDemographicsComponent,
-    NavbarHeaderComponent
+    NavbarHeaderComponent,
+    NavbarFooterComponent
   ],
   imports: [
     BrowserModule

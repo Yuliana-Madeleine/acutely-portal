@@ -106,3 +106,29 @@
     min-height: auto;
     max-width: auto;
 }
+.nav_footer{
+    background-color: #313742;  
+    padding:25px;  
+}
+#footer .nav-link{
+    color:#a0a0a0;
+    font-size: 0.55rem;
+}
+
+.footer_company_section{
+    position: relative;
+    display: flex;    
+    min-width: 0;
+    word-wrap: break-word;    
+    background-clip: border-box;    
+    justify-content: center !important;
+    background-color:#313742;
+}
+.footer_logo{
+    width:100px;
+    padding-bottom: 20px;
+}
+.social_logo{
+    width: 20px;
+    margin: 10px 10px 0px 10px;
+}
