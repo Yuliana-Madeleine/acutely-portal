@@ -2,19 +2,17 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TotalRevenueService {
-    constructor() {
-        // console.log('Here service to draw total revenues graphs');
-    }
+
     private revenue: any [] = [
-        {
-        name: 'Location A',
-        y: 62.74,
-        drilldown: 'Location A'
-        },
         {
             name: 'Akron',
             y: 10.57,
             drilldown: 'Akron'
+        },
+        {
+            name: 'Location A',
+            y: 62.74,
+            drilldown: 'Location A'
         },
         {
             name: 'Branson',
@@ -27,6 +25,14 @@ export class TotalRevenueService {
             drilldown: 'Corning'
         }
     ];
+
+    constructor() {
+        // console.log('Here service to draw total revenues graphs.');
+    }
+
+    getRevenue() {
+        return this.revenue;
+    }
 }
 
 export interface Revenue {
