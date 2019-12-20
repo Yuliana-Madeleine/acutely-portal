@@ -8,7 +8,7 @@ import * as Highcharts from 'highcharts';
 })
 export class DisplayTotalRevenueComponent implements OnInit {
   highcharts = Highcharts;
-  totalrevenue: any[] = [];
+  revenuesList: any = [];
 
   chartOptions = {
     chart: {
@@ -24,7 +24,7 @@ export class DisplayTotalRevenueComponent implements OnInit {
            enabled: false
     },
     xAxis: {
-      categories: ['testing']
+      categories: ['Location A', 'Akron', 'Branson', 'Corning']
     },
     yAxis: {
        title: {
@@ -74,12 +74,19 @@ export class DisplayTotalRevenueComponent implements OnInit {
  };
 
   ngOnInit() {
-    // this.totalrevenue = this.totalRevenueService.getRevenue();
-    // console.log(this.totalrevenue);
+    this.loadRevenuesList();
+    console.log('hit');
   }
 
-  constructor(private totalRevenueService: TotalRevenueService ) {
-    // this.chartOptions.series = this.totalRevenueService.getRevenue();
-    // console.log(this.chartOptions.series);
-   }
+  constructor(
+     private totalRevenueService: TotalRevenueService
+     ) {}
+
+  // Revenues list
+  loadRevenuesList() {
+   return this.totalRevenueService.GetRevenues().subscribe((data: {}) => {
+     this.revenuesList = data;
+     console.log(this.revenuesList);
+   });
+ }
 }

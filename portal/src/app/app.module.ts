@@ -23,6 +23,9 @@ import { MenuDemographicsComponent } from './components/menu-demographics/menu-d
 import { NavbarHeaderComponent } from './components/shared/navbar-header/navbar-header.component';
 import { NavbarFooterComponent } from './components/shared/navbar-footer/navbar-footer.component';
 
+/* Http client module */
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,8 @@ import { NavbarFooterComponent } from './components/shared/navbar-footer/navbar-
     NavbarFooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [
     TotalRevenueService,

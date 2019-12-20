@@ -1,42 +1,43 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Revenue } from '../shared/revenue';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class TotalRevenueService {
 
-    private revenue: any [] = [
-        {
-            name: 'Akron',
-            y: 10.57,
-            drilldown: 'Akron'
-        },
-        {
-            name: 'Location A',
-            y: 62.74,
-            drilldown: 'Location A'
-        },
-        {
-            name: 'Branson',
-            y: 7.23,
-            drilldown: 'Branson'
-        },
-        {
-            name: 'Corning',
-            y: 5.58,
-            drilldown: 'Corning'
-        }
-    ];
+ // Base url
+ baseurl = 'http://localhost:3000';
 
-    constructor() {
-        // console.log('Here service to draw total revenues graphs.');
-    }
+    constructor(private http: HttpClient) { }
+    // Http Headers
+    httpOptions = {
+        headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+        })
+    };
 
-    getRevenue() {
-        return this.revenue;
+    // GET
+    GetRevenues(): Observable<Revenue> {
+        return this.http.get<Revenue>(this.baseurl + '/data/')
+        .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+        );
     }
+    // Error handling
+    errorHandl(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Get client-side error
+      errorMessage = error.error.message;
+    } else {
+      // Get server-side error
+      errorMessage = `Error Code: ${error.status}\n Message: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
+ }
 }
 
-export interface Revenue {
-    name: string;
-    y: string;
-    drilldown: string;
-}
