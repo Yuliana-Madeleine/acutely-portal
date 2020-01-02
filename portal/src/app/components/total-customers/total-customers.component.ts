@@ -1,79 +1,59 @@
 import { Component, OnInit } from '@angular/core';
-import { TotalCustomersService } from '../../services/totalCustomers.service';
-import * as Highcharts from 'highcharts';
+import { InfoReportService } from '../../services/infoReports.service';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-total-customers',
   templateUrl: './total-customers.component.html'
 })
+
 export class DisplayTotalCustomersComponent implements OnInit {
-  highcharts = Highcharts;
-  chartOptions = {
-     chart: {
-        type: 'bar' // Other: bar splines column
-     },
-     title: {
-        text: 'Total Customers'
-     },
-     legend: {
-        enabled: false
-     },
-     credits: {
-      enabled: false
-     },
-     accessibility: {
-        announceNewData: {
-            enabled: true
+   dataList: any = [];
+   public chartType = 'horizontalBar';
+   public chartDatasets: Array<any> = [
+     { data: [], label: 'Customers' }
+   ];
+   public chartLabels: Array<any> = [];
+   public chartColors: Array<any> = [
+     {
+       backgroundColor: [
+         'rgba(46,145,137,1)',
+         'rgba(243, 196, 96, 1)',
+         'rgba(175, 80, 209, 1)',
+         'rgba(241, 68, 116, 1)'
+       ],
+       borderColor: [
+         'rgba(46,145,137,1)',
+         'rgba(243, 196, 96, 1)',
+         'rgba(175, 80, 209, 1)',
+         'rgba(241, 68, 116, 1)'
+       ],
+       borderWidth: 2,
+     }
+   ];
+
+   public chartOptions: any = {
+     responsive: true,
+     scales: { xAxes: [{}], yAxes: [{}] },
+     plugins: {
+        datalabels: {
+          anchor: 'end',
+          align: 'end',
         }
-     },
-     xAxis: {
-        type: 'category'
-     },
-     yAxis: {
-        title: false
-     },
-     tooltip: {
-        valueSuffix: 'K'
-     },
-     plotOptions: {
-        series: {
-            borderWidth: 0,
-            dataLabels: {
-                enabled: true,
-                format: '{point.y:.1f}K'
-            }
-        }
-     },
-     series: [
-        {
-           name: 'Locations',
-           colorByPoint: true,
-           data: [
-               {
-                   name: 'Location A',
-                   y: 36.74
-               },
-               {
-                   name: 'Akron',
-                   y: 47.57
-               },
-               {
-                   name: 'Branson',
-                   y: 33.23
-               },
-               {
-                   name: 'Corning',
-                   y: 34.58
-               }
-           ]
-       }
-     ]
-  };
+     }
+   };
+   public barChartPlugins = [pluginDataLabels];
+   constructor(private infoReportService: InfoReportService) { }
 
-  constructor(private totalCustomersService: TotalCustomersService) { }
+   ngOnInit() {
+       this.infoReportService.GetTotalCustomers().subscribe(res => {
+          this.dataList = res;
+          this.chartDatasets[0].data = this.dataList.data;
+          this.chartLabels = this.dataList.locations;
+       });
+    }
 
-  ngOnInit() {
-  }
-
+   public chartClicked(e: any): void { }
+   public chartHovered(e: any): void { }
 }
 

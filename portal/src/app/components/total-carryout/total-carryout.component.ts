@@ -1,72 +1,58 @@
 import { Component, OnInit } from '@angular/core';
-import { TotalCarryoutService } from '../../services/totalCarryout.service';
-import * as Highcharts from 'highcharts';
+import { InfoReportService } from '../../services/infoReports.service';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-total-carryout',
   templateUrl: './total-carryout.component.html'
 })
 export class DisplayTotalCarryoutComponent implements OnInit {
-  highcharts = Highcharts;
-  chartOptions = {
-     chart: {
-        type: 'bar' // Other: bar splines column
-     },
-     title: {
-        text: 'Total Carryout'
-     },
-     legend: {
-        enabled: false
-     },
-     credits: {
-        enabled: false
-     },
-     xAxis: {
-        type: 'category'
-     },
-     yAxis: {
-        title: false
-     },
-     tooltip: {
-        valueSuffix: 'M'
-     },
-     plotOptions: {
-        series: {
-            borderWidth: 0,
-            dataLabels: {
-                enabled: true,
-                format: '{point.y:.1f}M'
-            }
+   dataList: any = [];
+   public chartType = 'horizontalBar';
+   public chartDatasets: Array<any> = [
+     { data: [], label: 'Carryout' }
+   ];
+   public chartLabels: Array<any> = [];
+   public chartColors: Array<any> = [
+     {
+       backgroundColor: [
+         'rgba(46,145,137,1)',
+         'rgba(243, 196, 96, 1)',
+         'rgba(175, 80, 209, 1)',
+         'rgba(241, 68, 116, 1)'
+       ],
+       borderColor: [
+         'rgba(46,145,137,1)',
+         'rgba(243, 196, 96, 1)',
+         'rgba(175, 80, 209, 1)',
+         'rgba(241, 68, 116, 1)'
+       ],
+       borderWidth: 2,
+     }
+   ];
+
+   public chartOptions: any = {
+     responsive: true,
+     scales: { xAxes: [{}], yAxes: [{}] },
+     plugins: {
+        datalabels: {
+          anchor: 'end',
+          align: 'end',
         }
-    },
-     series: [
-        {
-           name: 'Locations',
-           colorByPoint: true,
-           data: [
-               {
-                   name: 'Location A',
-                   y: 1.1
-               },
-               {
-                   name: 'Akron',
-                   y: 0.1
-               },
-               {
-                   name: 'Branson',
-                   y: 0.8
-               },
-               {
-                   name: 'Corning',
-                   y: 1.2
-               }
-           ]
-       }
-     ]
-  };
-  constructor(private totalCarryout: TotalCarryoutService ) { }
+     }
+   };
 
-  ngOnInit() {
-  }
+   public barChartPlugins = [pluginDataLabels];
+   constructor(private infoReportService: InfoReportService) { }
 
+   ngOnInit() {
+       this.infoReportService.GetTotalCarryout().subscribe(res => {
+          this.dataList = res;
+          this.chartDatasets[0].data = this.dataList.data;
+          this.chartLabels = this.dataList.locations;
+       });
+    }
+
+   public chartClicked(e: any): void { }
+   public chartHovered(e: any): void { }
 }

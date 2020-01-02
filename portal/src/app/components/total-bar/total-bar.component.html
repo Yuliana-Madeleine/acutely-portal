@@ -1,9 +1,19 @@
 <div class="card card_item">
-    <div class="card-body card_body">
-          <highcharts-chart
-            [Highcharts] = "highcharts" 
-            [options] = "chartOptions" 
-            style = "width: 100%; height: 320px; display: block;border-radius: 5px;">
-          </highcharts-chart>          
+    <div class="card-body card_body">         
+      <div>
+        <h6>Total Bar</h6>
+      </div>
+      <div style="display: block">
+          <canvas baseChart
+                    [chartType]="chartType"
+                    [datasets]="chartDatasets"
+                    [labels]="chartLabels"
+                    [colors]="chartColors"
+                    [options]="chartOptions"
+                    [legend]="false"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+          </canvas>
+      </div>
     </div>
 </div>

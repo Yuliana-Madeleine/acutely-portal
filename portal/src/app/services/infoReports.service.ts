@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Revenue } from '../shared/revenue';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 @Injectable()
-export class TotalRevenueService {
+export class InfoReportService {
 
  // Base url
  baseurl = 'http://localhost:3000';
@@ -19,13 +18,38 @@ export class TotalRevenueService {
     };
 
     // GET
-    GetRevenues(): Observable<Revenue> {
-        return this.http.get<Revenue>(this.baseurl + '/data/')
+    GetTotalRevenues() {
+        return this.http.get(this.baseurl + '/totalRevenue/')
         .pipe(
         retry(1),
         catchError(this.errorHandl)
         );
     }
+
+    GetTotalBar() {
+      return this.http.get(this.baseurl + '/totalBar/')
+      .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+      );
+    }
+
+    GetTotalCustomers() {
+      return this.http.get(this.baseurl + '/totalCustomers/')
+      .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+      );
+    }
+
+    GetTotalCarryout() {
+      return this.http.get(this.baseurl + '/totalCarryout/')
+      .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+      );
+    }
+
     // Error handling
     errorHandl(error) {
     let errorMessage = '';

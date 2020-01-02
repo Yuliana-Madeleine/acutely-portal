@@ -1,92 +1,63 @@
 import { Component, OnInit } from '@angular/core';
-import { TotalRevenueService } from '../../services/totalRevenue.service';
-import * as Highcharts from 'highcharts';
+import { InfoReportService } from '../../services/infoReports.service';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-total-revenue',
   templateUrl: './total-revenue.component.html'
 })
-export class DisplayTotalRevenueComponent implements OnInit {
-  highcharts = Highcharts;
-  revenuesList: any = [];
+// export class DisplayTotalRevenueComponent implements OnInit {
 
-  chartOptions = {
-    chart: {
-       type: 'column' // Other: bar splines column
-    },
-    title: {
-       text: 'Total Revenue'
-    },
-    legend: {
-       enabled: false
-    },
-    credits: {
-           enabled: false
-    },
-    xAxis: {
-      categories: ['Location A', 'Akron', 'Branson', 'Corning']
-    },
-    yAxis: {
-       title: {
-          text: ''
-       }
-    },
-    tooltip: {
-       valueSuffix: '$'
-    },
-    plotOptions: {
-       series: {
-           borderWidth: 0,
-           dataLabels: {
-               enabled: true,
-               format: '{point.y:.1f}$'
-           }
-       }
-    },
-    series: [
-       {
-           name: '',
-           colorByPoint: true,
-           data: [
-            {
-               name: 'Location A',
-               y: 62.74,
-               drilldown: 'Location At'
-            },
-            {
-                  name: 'Akron',
-                  y: 10.57,
-                  drilldown: 'Akron'
-            },
-            {
-                  name: 'Branson',
-                  y: 7.23,
-                  drilldown: 'Branson'
-            },
-            {
-                  name: 'Corning',
-                  y: 5.58,
-                  drilldown: 'Corning'
-            }
-           ]
-       }
-   ]
- };
+export class DisplayTotalRevenueComponent implements OnInit {
+  dataList: any = [];
+
+  public chartType = 'bar';
+  public chartDatasets: Array<any> = [
+    { data: [], label: 'Revenues' }
+  ];
+  public chartLabels: Array<any> = [];
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: [
+        'rgba(46,145,137,1)',
+        'rgba(243, 196, 96, 1)',
+        'rgba(175, 80, 209, 1)',
+        'rgba(241, 68, 116, 1)'
+      ],
+      borderColor: [
+        'rgba(46,145,137,1)',
+        'rgba(243, 196, 96, 1)',
+        'rgba(175, 80, 209, 1)',
+        'rgba(241, 68, 116, 1)'
+      ],
+      borderWidth: 2,
+    }
+  ];
+
+  public chartOptions: any = {
+    responsive: true,
+    scales: { xAxes: [{}], yAxes: [{}] },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      }
+    }
+  };
+  public barChartPlugins = [pluginDataLabels];
+  constructor(private infoReportService: InfoReportService) { }
 
   ngOnInit() {
-    this.loadRevenuesList();
-    console.log('hit');
-  }
-
-  constructor(
-     private totalRevenueService: TotalRevenueService
-     ) {}
-
-  // Revenues list
-  loadRevenuesList() {
-   return this.totalRevenueService.GetRevenues().subscribe((data: {}) => {
-     this.revenuesList = data;
-     console.log(this.revenuesList);
-   });
+      this.infoReportService.GetTotalRevenues().subscribe(res => {
+         this.dataList = res;
+         console.log(this.dataList.locations);
+         this.chartDatasets[0].data = this.dataList.data;
+         console.log('DATA:');
+         console.log(this.chartDatasets[0].data);
+         console.log('LOCATIONS:');
+         this.chartLabels = this.dataList.locations;
+         console.log(this.chartLabels);
+      });
+   }
+  public chartHovered(e: any): void { }
  }
-}

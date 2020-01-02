@@ -1,15 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ChartsModule } from 'ng2-charts';
 
-import { TotalRevenueService } from './services/totalRevenue.service';
-import { TotalCustomersService } from './services/totalCustomers.service';
-import { TotalCarryoutService } from './services/totalCarryout.service';
-import { TotalBarService } from './services/totalBar.service';
+import { InfoReportService } from './services/infoReports.service';
 import { MapCustomerPotentialService } from './services/mapCustomerPotential.service';
 import { MapRevenuePotentialService } from './services/mapRevenuePotential.service';
 
 import { AppComponent } from './app.component';
-import { HighchartsChartComponent } from 'highcharts-angular';
 import { DisplayTotalCustomersComponent } from './components/total-customers/total-customers.component';
 import { DisplayTotalRevenueComponent } from './components/total-revenue/total-revenue.component';
 import { DisplayTotalCarryoutComponent } from './components/total-carryout/total-carryout.component';
@@ -29,7 +26,6 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    HighchartsChartComponent,
     DisplayTotalCustomersComponent,
     DisplayTotalRevenueComponent,
     DisplayTotalCarryoutComponent,
@@ -45,13 +41,11 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [
-    TotalRevenueService,
-    TotalCarryoutService,
-    TotalCustomersService,
-    TotalBarService,
+    InfoReportService,
     MapCustomerPotentialService,
     MapRevenuePotentialService
   ],

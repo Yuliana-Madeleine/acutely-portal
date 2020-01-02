@@ -1,78 +1,60 @@
 import { Component, OnInit } from '@angular/core';
-import { TotalBarService } from '../../services/totalBar.service';
-import * as Highcharts from 'highcharts';
+import { InfoReportService } from '../../services/infoReports.service';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-total-bar',
   templateUrl: './total-bar.component.html'
 })
+
 export class DisplayTotalBarComponent implements OnInit {
-  highcharts = Highcharts;
-  chartOptions = {
-     chart: {
-        type: 'column' // Other: bar splines column
-     },
-     title: {
-        text: 'Total Bar'
-     },
-     legend: {
-        enabled: false
-    },
-     credits: {
-         enabled: false
-     },
-     xAxis: {
-        categories: ['Location A', 'Akron', 'Branson', 'Corning']
-     },
-     yAxis: {
-        title: {
-           text: ''
+  dataList: any = [];
+
+  public chartType = 'bar';
+  public chartDatasets: Array<any> = [
+    { data: [], label: 'Bar' }
+  ];
+  public chartLabels: Array<any> = [];
+  public chartColors: Array<any> = [
+    {
+      backgroundColor: [
+        'rgba(46,145,137,1)',
+        'rgba(243, 196, 96, 1)',
+        'rgba(175, 80, 209, 1)',
+        'rgba(241, 68, 116, 1)'
+      ],
+      borderColor: [
+        'rgba(46,145,137,1)',
+        'rgba(243, 196, 96, 1)',
+        'rgba(175, 80, 209, 1)',
+        'rgba(241, 68, 116, 1)'
+      ],
+      borderWidth: 2,
+    }
+  ];
+
+  public chartOptions: any = {
+    responsive: true,
+    scales: { xAxes: [{}], yAxes: [{}] },
+     plugins: {
+        datalabels: {
+          anchor: 'end',
+          align: 'end',
         }
-     },
-     tooltip: {
-        valueSuffix: 'K'
-     },
-     plotOptions: {
-        series: {
-            borderWidth: 0,
-            dataLabels: {
-                enabled: true,
-                format: '{point.y:.1f}K'
-            }
-        }
-     },
-     series: [
-        {
-           name: '',
-           colorByPoint: true,
-           data: [
-               {
-                   name: 'Location A',
-                   y: 62.74,
-                   drilldown: 'Location A'
-               },
-               {
-                   name: 'Akron',
-                   y: 10.57,
-                   drilldown: 'Akron'
-               },
-               {
-                   name: 'Branson',
-                   y: 7.23,
-                   drilldown: 'Branson'
-               },
-               {
-                   name: 'Corning',
-                   y: 5.58,
-                   drilldown: 'Corning'
-               }
-           ]
-       }
-     ]
+     }
   };
-  constructor(private totalBar: TotalBarService) { }
+
+  public barChartPlugins = [pluginDataLabels];
+  constructor(private infoReportService: InfoReportService) { }
 
   ngOnInit() {
-  }
+      this.infoReportService.GetTotalBar().subscribe(res => {
+         this.dataList = res;
+         this.chartDatasets[0].data = this.dataList.data;
+         this.chartLabels = this.dataList.locations;
+      });
+   }
 
-}
+  public chartClicked(e: any): void { }
+  public chartHovered(e: any): void { }
+ }
