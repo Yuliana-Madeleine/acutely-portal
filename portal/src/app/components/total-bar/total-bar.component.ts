@@ -40,6 +40,14 @@ export class DisplayTotalBarComponent implements OnInit {
         datalabels: {
           anchor: 'end',
           align: 'end',
+          clamp: true,
+          labels: {
+            title: {
+                font: {
+                    weight: 'bold'
+                }
+            }
+          }
         }
      }
   };
